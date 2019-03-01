@@ -14,6 +14,11 @@ html body{
 	margin: 0;
 }
 
+
+a:not([class]){
+	color:var(--white);
+	text-decoration: none;
+}
 /* buttons */
 
 /*formatage*/
@@ -245,3 +250,10 @@ p.card-text{
 	display:flex;
 	justify-content:center;
 }
+
+
+
+
+
+
+
