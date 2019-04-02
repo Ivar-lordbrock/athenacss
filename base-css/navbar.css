@@ -1,58 +1,168 @@
-.Navbar {
-    background-color: var(--primary);
+@import url("https://fonts.googleapis.com/css?family=Exo+2:400,700");
+* {
+  box-sizing: border-box;
+}
+
+
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0;
+  background-color: var(--dark);
+  
+}
+
+.logo {
+  padding: 0 2.5rem;
+}
+.logo__link {
+  color: var(--white);;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.navbar__menu {
+  flex: 1;
+  display: flex;
+  width: 50%;
+  justify-content: flex-end;
+}
+.navbar__menu .menu__wrapper {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  padding: 0 2rem;
+}
+.navbar__menu .menu__wrapper .menu__item {
+  list-style: none;
+  display: flex;
+}
+.navbar__menu .menu__wrapper .menu__item .menu__link {
+  display: flex;
+  outline: none;
+  color: var(--white);
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.4rem;
+  letter-spacing: .12rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar__menu {
     display: flex;
-    padding: 18px; 
-    font-family: sans-serif;
-    color: var(--white);
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-end;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #fff;
+    opacity: 0;
+    transition: all 0.2s ease;
   }
-  
-  .Navbar__Link {
-    padding-left: 10px;
-    padding-right: 10px;
+  .navbar__menu .menu__wrapper {
+    width: 30%;
+    height: 100%;
+    flex-flow: column;
+    justify-content: center;
   }
-  .Navbar__Link a{
-    font-family: 'Lato', 'sans-serif';
-    font-size:1.2em;
-  }
-  .Navbar__Items {
+  .navbar__menu .menu__wrapper .menu__item {
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    align-self: flex-end;
+    margin-bottom: 2rem;
   }
-  
-  .Navbar__Items--right {
-    margin-left:auto;
+  .navbar__menu .menu__wrapper .menu__item:nth-child(1) .menu__link {
+    transition-delay: 0.2s;
   }
-  
-  .Navbar__Link-toggle {
-    display: none;
+  .navbar__menu .menu__wrapper .menu__item:nth-child(2) .menu__link {
+    transition-delay: 0.3s;
   }
-  
-  @media only screen and (max-width: 740px) {
-    .Navbar__Items,
-    .Navbar {
-      flex-direction: column;
-    }
-  
-  .Navbar__Items {
-      display:none;
-    }
-  
-  .Navbar__Items--right {
-      margin-left:0;
-    }
-  
-  .Navbar__ToggleShow {
-      display: flex;
-    }
-  
-  .Navbar__Link-toggle {
-      align-self: flex-end;
-      display: initial;
-      position: absolute;
-      cursor: pointer;
-     } 
-     .Navbar__Link {
-         padding: 5px; 
-         margin: 5px;  
-     }
-     
+  .navbar__menu .menu__wrapper .menu__item:nth-child(3) .menu__link {
+    transition-delay: 0.4s;
   }
+  .navbar__menu .menu__wrapper .menu__item:nth-child(4) .menu__link {
+    transition-delay: 0.5s;
+  }
+  .navbar__menu .menu__wrapper .menu__item:not(:first-child) {
+    margin-left: 0;
+  }
+  .navbar__menu .menu__wrapper .menu__item .menu__link {
+    padding: 1rem 0;
+    opacity: 0;
+    color: #000;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: .12rem;
+    transform: translateX(-2rem);
+    transition: all 0.2s ease;
+  }
+
+  .navbar__btn--toggle {
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    width: 4.8rem;
+    height: 4.8rem;
+    cursor: pointer;
+    z-index: 9999;
+    border-radius: 50%;
+    align-items: center;
+  }
+  .navbar__btn--toggle .hamburger-menu {
+    display: block;
+    width: 2rem;
+    height: .2rem;
+    background: #000;
+    border-radius: .2rem;
+    margin-left: 1.4rem;
+  }
+  .navbar__btn--toggle .hamburger-menu:nth-child(1) {
+    margin-top: 1rem;
+  }
+  .navbar__btn--toggle .hamburger-menu:nth-child(2) {
+    margin-top: .4rem;
+    opacity: 1;
+  }
+  .navbar__btn--toggle .hamburger-menu:nth-child(3) {
+    margin-top: .4rem;
+  }
+}
+#nav:checked + .navbar__btn--toggle {
+  transform: rotate(45deg);
+}
+#nav:checked + .navbar__btn--toggle .hamburger-menu {
+  background: #000;
+  transition: transform 0.2s ease;
+}
+#nav:checked + .navbar__btn--toggle .hamburger-menu:nth-child(1) {
+  transform: translateY(6px) rotate(180deg);
+}
+#nav:checked + .navbar__btn--toggle .hamburger-menu:nth-child(2) {
+  opacity: 0;
+}
+#nav:checked + .navbar__btn--toggle .hamburger-menu:nth-child(3) {
+  transform: translateY(-6px) rotate(90deg);
+}
+#nav:checked ~ .navbar__menu {
+  z-index: 9990;
+  opacity: 1;
+}
+#nav:checked ~ .navbar__menu .menu__link {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hidden {
+  display: none;
+}

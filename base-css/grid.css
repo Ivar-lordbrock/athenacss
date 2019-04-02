@@ -364,7 +364,7 @@
 /*# sourceMappingURL=pridx.css.map */
 
 
-.container.is-fluid {
+.container .is-fluid {
 	margin-left: 64px;
 	margin-right: 64px;
 	max-width: none;
